@@ -42,13 +42,14 @@
 			timeout = query["renext"];
 		}
 
-		if(isWeiXin()){
-			//window.setTimeout(function(){
-			//	window.location.href = gotodomain;
-			//}, timeout*1000);
-		}else{
-			window.location.href = gotodomain;
+		if(gotodomain){
+			if(isWeiXin()){
+				alert("isWeiXin");
+			}else{
+				window.location.href = gotodomain;
+			}
 		}
+
 	})();
 </script>
 </html>
