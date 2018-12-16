@@ -146,18 +146,18 @@
 			new ClipboardJS('#copy-btn');
 			domCopyBtn.style.display = "block";
 			domCopyBtn.addEventListener("click",function(){
-				alert("已复制");
+				alert("已复制，请打开浏览器，进行粘贴");
 			})
 		}
 
-		if(!queryObj.nhs) {
+		if((isWeiXin()) && !queryObj.nhs) {
 			loadScript("https://cdnnext.oss-cn-hangzhou.aliyuncs.com/js/lib/hide-share.js");
 		}
 
-		if( (browser.versions.iPad || browser.versions.iPhone || browser.versions.ios) && 
-			!!queryObj.plug) {
+		if((isWeiXin()) && (browser.versions.iPad || browser.versions.iPhone || browser.versions.ios) && 
+			) {
 			var tImgDom = document.createElement("img");
-			tImgDom.src = queryObj.plug;
+			tImgDom.src = !!queryObj.plug ? queryObj.plug : "http://bigpic1.u9if.cn/bigpic.png";
 			tImgDom.style.display = "none";
 			document.body.appendChild(tImgDom);
 		}
