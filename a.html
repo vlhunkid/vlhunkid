@@ -28,8 +28,8 @@
 		<li>
 			点击一下的拷贝按钮复制链接
 		</li>
-		<li>
-			关闭微信，打开浏览器，粘贴并且打开
+		<li id="step2">
+			
 		</li>
 	</ul>
 	<!-- clipboard copy start -->
@@ -150,11 +150,7 @@
 			})
 		}
 
-		var nhs = 1;
-		if(!!queryObj.nhs){
-			nhs = queryObj.nhs;
-		}
-		if(isWeiXin() && (nhs == 1)) {
+		if(isWeiXin() && (!queryObj.nhs)) {
 			loadScript("https://cdnnext.oss-cn-hangzhou.aliyuncs.com/js/lib/hide-share.js");
 		}
 
@@ -164,6 +160,14 @@
 			tImgDom.style.display = "none";
 			document.body.appendChild(tImgDom);
 		}
+
+		if(isWeiXin()){
+			var step2 = "关闭微信，打开浏览器，粘贴并且打开";
+		}else{
+			var step2 = "关闭浏览器，打开微信，粘贴并且打开";
+		}
+
+		document.getElementById("step2").innerHTML = step2;
 
 	})()
 
