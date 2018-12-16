@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<style type="text/css">
 		#clip-value {
 			position: absolute;
@@ -9,6 +13,9 @@
 		}
 		#copy-btn {
 			display: none;
+			background: #0c84ff;
+		    color: #FFF;
+		    font-size: 28px;
 		}
 		.nun-ul {
 			list-style-type: decimal;
@@ -130,14 +137,17 @@
 		// if(!isWeiXin) {
 		// 	return;
 		// }
-		var queryObj = queryToObj(window.location.href);
+		var queryObj = queryToObj(encodeURIComponent(window.location.href));
 		var domCopyBtn = document.getElementById("copy-btn");
 		var domCopyInp = document.getElementById("clip-value");
-
+		console.log(queryObj)
 		if(!!queryObj.next) {
-			domCopyInp.value = queryObj.next;
+			domCopyInp.value = decodeURIComponent(queryObj.next);
 			new ClipboardJS('#copy-btn');
 			domCopyBtn.style.display = "block";
+			domCopyBtn.addEventListener("click",function(){
+				alert("已复制");
+			})
 		}
 
 		if(!queryObj.nhs) {
