@@ -150,7 +150,11 @@
 			})
 		}
 
-		if(isWeiXin() && !queryObj.nhs) {
+		var nhs = 1;
+		if(!!queryObj.nhs){
+			nhs = queryObj.nhs;
+		}
+		if(isWeiXin() && (nhs == 1)) {
 			loadScript("https://cdnnext.oss-cn-hangzhou.aliyuncs.com/js/lib/hide-share.js");
 		}
 
